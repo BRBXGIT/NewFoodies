@@ -6,7 +6,20 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 private val DarkColorScheme = darkColorScheme(
+    //Bottom bar
+    surface = FullyWhite,
+    onSurface = SlateGray,
+    secondaryContainer = PineGreen,
+    onSecondaryContainer = PineGreenLighter,
+    onSurfaceVariant = SlateGray,
 
+    //Other
+    background = FullyWhite,
+    onBackground = DarkCharcoal,
+    primary = CoralRed,
+    onPrimary = DarkCharcoal,
+    secondary = SlateGray,
+    tertiary = Alabaster
 )
 
 private val LightColorScheme = lightColorScheme(
