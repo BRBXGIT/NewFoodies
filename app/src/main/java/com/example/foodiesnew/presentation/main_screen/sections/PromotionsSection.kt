@@ -1,6 +1,8 @@
 package com.example.foodiesnew.presentation.main_screen.sections
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,9 +14,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -60,20 +64,27 @@ fun PromotionsSection() {
             "Restaurant promotions",
             "More bonuses"
         )
+        var chosenPromotionIndex by rememberSaveable { mutableIntStateOf(0) }
 
         LazyRow(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
-            items(promotionsList) { promotion ->
-                var chosen by rememberSaveable { mutableStateOf(false) }
+            itemsIndexed(promotionsList) { index, promotion ->
+                val promotionBoxColor by animateColorAsState(
+                    targetValue = if (index == chosenPromotionIndex) mColors.primary else mColors.tertiary,
+                    label = "promotionBoxAnimatedColor"
+                )
                 Box(
                     modifier = Modifier
                         .background(
-                            color = mColors.tertiary,
+                            color = promotionBoxColor,
                             shape = mShapes.extraSmall
                         )
+                        .clickable {
+                            chosenPromotionIndex = index
+                        }
                         .padding(8.dp),
                     contentAlignment = Alignment.Center
                 ) {
