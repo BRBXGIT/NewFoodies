@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.example.foodiesnew.presentation.common_bars.CommonTopAppBar
 import com.example.foodiesnew.presentation.main_screen.sections.BonusSection
 import com.example.foodiesnew.presentation.main_screen.sections.GreetingSection
+import com.example.foodiesnew.presentation.main_screen.sections.PromotionsSection
 import com.example.foodiesnew.ui.theme.mColors
 
 @Composable
@@ -36,6 +37,8 @@ fun MainScreen(
             GreetingSection()
 
             BonusSection()
+
+            PromotionsSection()
         }
     }
 }
