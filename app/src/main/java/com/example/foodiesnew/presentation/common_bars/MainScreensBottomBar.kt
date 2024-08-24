@@ -1,11 +1,22 @@
 package com.example.foodiesnew.presentation.common_bars
 
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.foodiesnew.R
 import com.example.foodiesnew.presentation.main_screen.navigation.MainScreenRoute
 import com.example.foodiesnew.presentation.order_screen.navigation.OrderScreenRoute
 import com.example.foodiesnew.presentation.settings_screen.navigation.SettingsScreenRoute
+import com.example.foodiesnew.ui.theme.mTypography
 
 data class NavItem(
     val title: String,
@@ -16,7 +27,9 @@ data class NavItem(
 )
 
 @Composable
-fun MainScreensBottomBar() {
+fun MainScreensBottomBar(
+    navController: NavHostController
+) {
     val navItems = listOf(
         NavItem(
             title = "Main",
@@ -40,4 +53,34 @@ fun MainScreensBottomBar() {
             destination = "SettingsScreenRoute"
         )
     )
+
+    val currentDestination by navController.currentBackStackEntryAsState()
+    val currentRoute = if(currentDestination != null) currentDestination?.destination?.route.toString().split(".")[6] else "MainScreenRoute"
+    BottomAppBar(
+        tonalElevation = 0.dp,
+        modifier = Modifier.shadow(32.dp)
+    ) {
+        navItems.forEach { navItem ->
+            NavigationBarItem(
+                selected = navItem.destination == currentRoute,
+                onClick = {
+                    if(navItem.destination != currentRoute) {
+                        navController.navigate(navItem.route)
+                    }
+                },
+                icon = {
+                    Icon(
+                        painter = painterResource(id = if(navItem.destination == currentRoute) navItem.iconChosen else navItem.icon),
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text(
+                        text = navItem.title,
+                        style = mTypography.labelLarge
+                    )
+                }
+            )
+        }
+    }
 }

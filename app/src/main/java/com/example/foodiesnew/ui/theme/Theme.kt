@@ -8,9 +8,9 @@ import androidx.compose.runtime.Composable
 private val DarkColorScheme = darkColorScheme(
     //Bottom bar
     surface = FullyWhite,
-    onSurface = SlateGray,
-    secondaryContainer = PineGreen,
-    onSecondaryContainer = PineGreenLighter,
+    onSurface = DarkCharcoal,
+    secondaryContainer = PineGreenLighter,
+    onSecondaryContainer = PineGreen,
     onSurfaceVariant = SlateGray,
 
     //Other
