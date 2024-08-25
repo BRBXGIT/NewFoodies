@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.example.foodiesnew.presentation.common_bars.CommonTopAppBar
 import com.example.foodiesnew.presentation.common_bars.MainScreensBottomBar
 import com.example.foodiesnew.presentation.main_screen.navigation.MainScreenRoute
 import com.example.foodiesnew.presentation.main_screen.navigation.mainScreen
@@ -18,7 +19,8 @@ fun NavGraph() {
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        bottomBar = { MainScreensBottomBar(navController = navController) }
+        bottomBar = { MainScreensBottomBar(navController = navController) },
+        topBar = { CommonTopAppBar() }
     ) { mainScaffoldPadding ->
         NavHost(
             navController = navController,

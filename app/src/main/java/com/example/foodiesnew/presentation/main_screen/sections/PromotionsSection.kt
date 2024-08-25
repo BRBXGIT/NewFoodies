@@ -54,7 +54,7 @@ fun PromotionsSection() {
                 text = "Promotions",
                 style = mTypography.headlineLarge.copy(
                     fontWeight = FontWeight.Bold
-                ),
+                )
             )
 
             TextButton(
@@ -108,10 +108,10 @@ fun PromotionsSection() {
         }
 
         val promotionsImageList = listOf(
-            R.drawable.offer_4,
             R.drawable.offer_3,
-            R.drawable.offer_2,
-            R.drawable.offer_1
+            R.drawable.offer_3,
+            R.drawable.offer_3,
+            R.drawable.offer_3
         )
 
         LazyRow(

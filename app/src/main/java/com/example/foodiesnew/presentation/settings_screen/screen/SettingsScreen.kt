@@ -15,20 +15,12 @@ import com.example.foodiesnew.ui.theme.mColors
 fun SettingsScreen(
     mainScaffoldPadding: PaddingValues
 ) {
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        topBar = { CommonTopAppBar() }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(mColors.background)
-                .padding(
-                    bottom = mainScaffoldPadding.calculateBottomPadding(),
-                    top = innerPadding.calculateTopPadding()
-                )
-        ) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(mColors.background)
+            .padding(mainScaffoldPadding)
+    ) {
 
-        }
     }
 }
