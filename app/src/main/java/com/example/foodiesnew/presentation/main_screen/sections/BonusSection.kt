@@ -58,7 +58,7 @@ fun RowScope.BonusSurface(
 ) {
     Surface(
         modifier = Modifier.weight(0.5f),
-        shadowElevation = 8.dp,
+        shadowElevation = 2.dp,
         shape = mShapes.small,
     ) {
         Box(

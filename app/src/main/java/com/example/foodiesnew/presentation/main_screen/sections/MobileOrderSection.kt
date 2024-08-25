@@ -44,7 +44,7 @@ fun MobileOrderSection() {
         ) {
             Surface(
                 modifier = Modifier.weight(0.5f),
-                shadowElevation = 4.dp,
+                shadowElevation = 1.dp,
                 shape = mShapes.extraSmall
             ) {
                 Box(
@@ -74,7 +74,7 @@ fun MobileOrderSection() {
 
             Surface(
                 modifier = Modifier.weight(0.5f),
-                shadowElevation = 4.dp,
+                shadowElevation = 1.dp,
                 shape = mShapes.extraSmall
             ) {
                 Box(

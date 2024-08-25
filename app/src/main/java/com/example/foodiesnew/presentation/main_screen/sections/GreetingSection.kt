@@ -60,7 +60,7 @@ fun GreetingSection() {
                         .height(150.dp)
                         .width(330.dp)
                         .shadow(
-                            elevation = 16.dp,
+                            elevation = 2.dp,
                             shape = mShapes.extraSmall
                         )
                         .clip(mShapes.extraSmall)
