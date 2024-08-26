@@ -19,6 +19,7 @@ fun NavGraph() {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = { MainScreensBottomBar(navController = navController) },
+        topBar = { CommonTopAppBar() }
     ) { mainScaffoldPadding ->
         NavHost(
             navController = navController,

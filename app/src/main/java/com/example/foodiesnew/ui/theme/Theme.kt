@@ -19,7 +19,8 @@ private val DarkColorScheme = darkColorScheme(
     primary = CoralRed,
     onPrimary = DarkCharcoal,
     secondary = SlateGray,
-    tertiary = Alabaster
+    tertiary = Alabaster,
+    onTertiary = DarkCharcoal
 )
 
 private val LightColorScheme = lightColorScheme(

@@ -1,8 +1,6 @@
 package com.example.foodiesnew.presentation.order_screen.sections
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -97,13 +95,12 @@ fun RowScope.OrderPlace(
             Icon(
                 painter = painterResource(id = if(isChosen) iconChosen else icon),
                 contentDescription = null,
-                tint = if(isChosen) mColors.primary else mColors.onSurface
+                tint = if(isChosen) mColors.primary else mColors.onTertiary
             )
 
             Text(
                 text = text,
                 style = mTypography.bodyMedium,
-                color = mColors.onSurface
             )
         }
     }
