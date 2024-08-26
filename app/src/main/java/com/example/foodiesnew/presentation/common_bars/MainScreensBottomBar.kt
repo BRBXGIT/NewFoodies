@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.foodiesnew.R
-import com.example.foodiesnew.presentation.main_screen.navigation.MainScreenRoute
 import com.example.foodiesnew.presentation.order_screen.navigation.OrderScreenRoute
 import com.example.foodiesnew.presentation.settings_screen.navigation.SettingsScreenRoute
 import com.example.foodiesnew.ui.theme.mTypography
@@ -31,13 +30,6 @@ fun MainScreensBottomBar(
     navController: NavHostController
 ) {
     val navItems = listOf(
-        NavItem(
-            title = "Main",
-            icon = R.drawable.ic_home_outlined,
-            iconChosen = R.drawable.ic_home_filled,
-            route = MainScreenRoute,
-            destination = "MainScreenRoute"
-        ),
         NavItem(
             title = "Order",
             icon = R.drawable.ic_ladle_outlined,
