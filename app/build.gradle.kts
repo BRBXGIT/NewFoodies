@@ -70,6 +70,8 @@ dependencies {
     //Nav
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+    //Coil
+    implementation(libs.coil.compose)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

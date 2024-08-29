@@ -1,5 +1,6 @@
 package com.example.foodiesnew.data.repos
 
+import com.example.foodiesnew.data.models.MealCategories
 import com.example.foodiesnew.data.models.MealList
 import com.example.foodiesnew.data.network.MealApiInstance
 import com.example.foodiesnew.domain.MainRepo
@@ -11,5 +12,9 @@ class MainRepoImpl @Inject constructor(
 
     override suspend fun getAllMeals(): MealList {
         return mealApiInstance.getAllMeals()
+    }
+
+    override suspend fun getAllMealCategories(): MealCategories {
+        return mealApiInstance.getAllMealCategories()
     }
 }

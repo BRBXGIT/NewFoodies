@@ -33,39 +33,34 @@ import com.example.foodiesnew.ui.theme.mTypography
 
 @Composable
 fun OrderPlaceSection() {
-    Column(
+    Row(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(horizontal = 16.dp)
+            .background(
+                color = mColors.tertiary,
+                shape = mShapes.extraSmall
+            )
+            .padding(2.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(
-                    color = mColors.tertiary,
-                    shape = mShapes.extraSmall
-                )
-                .padding(2.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            var chosenOrderType by rememberSaveable { mutableIntStateOf(0) }
-            OrderPlace(
-                text = "In restaurant",
-                icon = R.drawable.ic_home_outlined,
-                iconChosen = R.drawable.ic_home_filled,
-                isChosen = chosenOrderType == 0,
-                onClick = { chosenOrderType = 0 }
-            )
+        var chosenOrderType by rememberSaveable { mutableIntStateOf(0) }
+        OrderPlace(
+            text = "In restaurant",
+            icon = R.drawable.ic_home_outlined,
+            iconChosen = R.drawable.ic_home_filled,
+            isChosen = chosenOrderType == 0,
+            onClick = { chosenOrderType = 0 }
+        )
 
-            OrderPlace(
-                text = "Delivery",
-                icon = R.drawable.ic_delivery_outlined,
-                iconChosen = R.drawable.ic_delivery_filled,
-                isChosen = chosenOrderType == 1,
-                onClick = { chosenOrderType = 1 }
-            )
-        }
+        OrderPlace(
+            text = "Delivery",
+            icon = R.drawable.ic_delivery_outlined,
+            iconChosen = R.drawable.ic_delivery_filled,
+            isChosen = chosenOrderType == 1,
+            onClick = { chosenOrderType = 1 }
+        )
     }
 }
 

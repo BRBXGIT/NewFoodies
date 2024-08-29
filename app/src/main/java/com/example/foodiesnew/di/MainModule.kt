@@ -20,7 +20,7 @@ object MainModule {
     @Singleton
     fun provideMainApiInstance(): MealApiInstance {
         return Retrofit.Builder()
-            .baseUrl("https://www.themealdb.com/api/json/v1/1")
+            .baseUrl("https://www.themealdb.com/api/json/v1/1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create()
