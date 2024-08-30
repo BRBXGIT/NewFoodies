@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
@@ -56,7 +57,8 @@ fun AddMealSection() {
                                 color = mColors.tertiary,
                                 shape = mShapes.extraSmall
                             )
-                            .weight(0.3f)
+                            .weight(0.4f)
+                            .height(46.dp)
                     ) {
                         var mealCount by rememberSaveable { mutableIntStateOf(1) }
                         IconButton(
@@ -87,7 +89,9 @@ fun AddMealSection() {
 
                     Button(
                         onClick = { /*TODO*/ },
-                        modifier = Modifier.weight(0.7f),
+                        modifier = Modifier
+                            .weight(0.6f)
+                            .height(46.dp),
                         shape = mShapes.extraSmall
                     ) {
                         Text(

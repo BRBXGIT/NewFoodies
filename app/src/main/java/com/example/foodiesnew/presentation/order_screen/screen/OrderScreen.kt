@@ -17,6 +17,7 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.foodiesnew.presentation.order_screen.sections.CategoriesSection
@@ -39,8 +40,6 @@ fun OrderScreen(
             .fillMaxSize()
             .background(mColors.background)
             .padding(mainScaffoldPadding),
-        verticalArrangement = Arrangement.spacedBy(24.dp)
-
     ) {
         ContainerWithScrollBehavior(
             scrollBehavior = topAppBarScrollBehavior
@@ -55,11 +54,13 @@ fun OrderScreen(
                 CategoriesSection()
 
                 RepeatLastOrderSection()
+
+                Spacer(modifier = Modifier.height(0.dp))
             }
         }
 
         Column(
-            verticalArrangement = Arrangement.spacedBy(0.dp)
+            verticalArrangement = Arrangement.spacedBy(0.dp),
         ) {
             val mealCategories by orderScreenVM.mealCategories.collectAsStateWithLifecycle()
             val meals by orderScreenVM.meals.collectAsStateWithLifecycle()
