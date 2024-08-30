@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.example.foodiesnew.presentation.cart_screen.navigation.cartScreen
 import com.example.foodiesnew.presentation.common_bars.CommonTopAppBar
 import com.example.foodiesnew.presentation.common_bars.MainScreensBottomBar
 import com.example.foodiesnew.presentation.order_screen.navigation.OrderScreenRoute
@@ -40,6 +41,10 @@ fun NavGraph() {
             )
 
             settingsScreen(
+                mainScaffoldPadding = mainScaffoldPadding
+            )
+
+            cartScreen(
                 mainScaffoldPadding = mainScaffoldPadding
             )
         }

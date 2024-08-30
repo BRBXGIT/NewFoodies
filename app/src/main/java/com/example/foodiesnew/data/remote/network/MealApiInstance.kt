@@ -1,7 +1,7 @@
-package com.example.foodiesnew.data.network
+package com.example.foodiesnew.data.remote.network
 
-import com.example.foodiesnew.data.models.MealCategories
-import com.example.foodiesnew.data.models.MealList
+import com.example.foodiesnew.data.remote.models.MealCategories
+import com.example.foodiesnew.data.remote.models.MealList
 import retrofit2.http.GET
 
 interface MealApiInstance {

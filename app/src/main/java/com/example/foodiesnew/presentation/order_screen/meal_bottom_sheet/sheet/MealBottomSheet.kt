@@ -12,7 +12,7 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.foodiesnew.data.models.Meal
+import com.example.foodiesnew.data.remote.models.Meal
 import com.example.foodiesnew.presentation.order_screen.meal_bottom_sheet.sections.AddMealSection
 import com.example.foodiesnew.presentation.order_screen.meal_bottom_sheet.sections.DescriptionSection
 import com.example.foodiesnew.presentation.order_screen.meal_bottom_sheet.sections.HeaderSection

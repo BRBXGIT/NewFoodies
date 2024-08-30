@@ -1,4 +1,4 @@
-package com.example.foodiesnew.data.models
+package com.example.foodiesnew.data.remote.models
 
 data class Category(
     val idCategory: String,

@@ -41,8 +41,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
-import com.example.foodiesnew.data.models.Category
-import com.example.foodiesnew.data.models.Meal
+import com.example.foodiesnew.data.remote.models.Category
+import com.example.foodiesnew.data.remote.models.Meal
 import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mTypography
 import kotlinx.coroutines.launch

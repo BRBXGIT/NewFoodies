@@ -34,7 +34,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.foodiesnew.R
-import com.example.foodiesnew.data.models.Meal
+import com.example.foodiesnew.data.remote.models.Meal
 import com.example.foodiesnew.presentation.order_screen.meal_bottom_sheet.sheet.MealBottomSheet
 import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mShapes

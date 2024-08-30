@@ -1,21 +1,25 @@
-package com.example.foodiesnew.domain
+package com.example.foodiesnew.data.local.db
 
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Query
+import androidx.room.Update
+import androidx.room.Upsert
 import com.example.foodiesnew.data.local.models.CartMeal
-import com.example.foodiesnew.data.remote.models.MealCategories
-import com.example.foodiesnew.data.remote.models.MealList
 import kotlinx.coroutines.flow.Flow
 
-interface MainRepo {
+@Dao
+interface CartDao {
 
-    suspend fun getAllMeals(): MealList
-
-    suspend fun getAllMealCategories(): MealCategories
-
+    @Upsert
     suspend fun upsertMealToCart(cartMeal: CartMeal)
 
+    @Delete
     suspend fun deleteMealFromCart(cartMeal: CartMeal)
 
+    @Update
     suspend fun updateMealFromCart(cartMeal: CartMeal)
 
+    @Query("SELECT * FROM cartmeal")
     suspend fun getAllMealsFromCart(): Flow<List<CartMeal>>
 }
