@@ -26,12 +26,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.foodiesnew.R
+import com.example.foodiesnew.data.local.models.CartMeal
+import com.example.foodiesnew.presentation.cart_screen.screen.CartScreenVM
+import com.example.foodiesnew.presentation.order_screen.screen.OrderScreenVM
 import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mShapes
 import com.example.foodiesnew.ui.theme.mTypography
 
 @Composable
-fun AddMealSection() {
+fun AddMealSection(
+    mealCount: Int,
+    onMinusClick: () -> Unit,
+    onPlusClick: () -> Unit,
+    onAddMealClick: () -> Unit
+) {
     Column(
         verticalArrangement = Arrangement.spacedBy(0.dp)
     ) {
@@ -60,9 +68,8 @@ fun AddMealSection() {
                             .weight(0.4f)
                             .height(46.dp)
                     ) {
-                        var mealCount by rememberSaveable { mutableIntStateOf(1) }
                         IconButton(
-                            onClick = { if(mealCount != 1) mealCount -= 1 }
+                            onClick = { if(mealCount != 1) onMinusClick() }
                         ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_minus_filled),
@@ -77,7 +84,7 @@ fun AddMealSection() {
                         )
 
                         IconButton(
-                            onClick = { if(mealCount != 99) mealCount += 1 }
+                            onClick = { if(mealCount != 99) onPlusClick() }
                         ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_plus_filled),
@@ -88,7 +95,7 @@ fun AddMealSection() {
                     }
 
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { onAddMealClick() },
                         modifier = Modifier
                             .weight(0.6f)
                             .height(46.dp),

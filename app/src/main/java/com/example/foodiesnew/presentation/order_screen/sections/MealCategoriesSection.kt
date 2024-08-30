@@ -43,6 +43,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
 import com.example.foodiesnew.data.remote.models.Category
 import com.example.foodiesnew.data.remote.models.Meal
+import com.example.foodiesnew.presentation.cart_screen.screen.CartScreenVM
+import com.example.foodiesnew.presentation.order_screen.screen.OrderScreenVM
 import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mTypography
 import kotlinx.coroutines.launch
@@ -50,7 +52,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun MealCategoriesSection(
     mealCategories: List<Category>,
-    meals: List<Meal>
+    meals: List<Meal>,
+    orderScreenVM: OrderScreenVM
 ) {
     if(mealCategories.isNotEmpty()) {
         val pagerState = rememberPagerState(pageCount = { mealCategories.size })
@@ -119,7 +122,10 @@ fun MealCategoriesSection(
                 it.strCategory == categoryByPage
             }
 
-            MealsSection(meals = sortedMeals)
+            MealsSection(
+                meals = sortedMeals,
+                orderScreenVM = orderScreenVM
+            )
         }
     } else {
         Box(

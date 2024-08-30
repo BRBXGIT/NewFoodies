@@ -14,12 +14,12 @@ interface CartDao {
     @Upsert
     suspend fun upsertMealToCart(cartMeal: CartMeal)
 
-    @Delete
-    suspend fun deleteMealFromCart(cartMeal: CartMeal)
+    @Query("DELETE FROM cartmeal WHERE title = :name")
+    suspend fun deleteMealFromCartBy(name: String)
 
-    @Update
-    suspend fun updateMealFromCart(cartMeal: CartMeal)
+    @Query("UPDATE cartmeal SET amount = :amount WHERE title = :name")
+    suspend fun updateAmountMealFromCartByName(name: String, amount: Int)
 
     @Query("SELECT * FROM cartmeal")
-    suspend fun getAllMealsFromCart(): Flow<List<CartMeal>>
+    fun getAllMealsFromCart(): Flow<List<CartMeal>>
 }

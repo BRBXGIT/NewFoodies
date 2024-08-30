@@ -36,13 +36,15 @@ import coil.compose.AsyncImage
 import com.example.foodiesnew.R
 import com.example.foodiesnew.data.remote.models.Meal
 import com.example.foodiesnew.presentation.order_screen.meal_bottom_sheet.sheet.MealBottomSheet
+import com.example.foodiesnew.presentation.order_screen.screen.OrderScreenVM
 import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mShapes
 import com.example.foodiesnew.ui.theme.mTypography
 
 @Composable
 fun MealsSection(
-    meals: List<Meal>
+    meals: List<Meal>,
+    orderScreenVM: OrderScreenVM
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -54,27 +56,36 @@ fun MealsSection(
         ),
         modifier = Modifier.fillMaxSize()
     ) {
-        items(meals) { meal ->
-            MealPreview(meal = meal)
+        items(meals, key = { it.strMeal }) { meal ->
+            MealPreview(
+                meal = meal,
+                orderScreenVM = orderScreenVM,
+                modifier = Modifier
+                    .height(300.dp)
+                    .animateItem()
+            )
         }
     }
 }
 
 @Composable
 fun MealPreview(
-    meal: Meal
+    meal: Meal,
+    orderScreenVM: OrderScreenVM,
+    modifier: Modifier
 ) {
     var openMealBottomSheet by rememberSaveable { mutableStateOf(false) }
     if(openMealBottomSheet) {
         MealBottomSheet(
             meal = meal,
-            onDismissRequest = { openMealBottomSheet = false }
+            onDismissRequest = { openMealBottomSheet = false },
+            orderScreenVM = orderScreenVM
         )
     }
     Surface(
         shadowElevation = 2.dp,
         shape = mShapes.extraSmall,
-        modifier = Modifier.height(300.dp),
+        modifier = modifier,
         onClick = { openMealBottomSheet = true }
     ) {
         Column(

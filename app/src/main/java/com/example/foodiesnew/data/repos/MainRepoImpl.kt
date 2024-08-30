@@ -26,15 +26,15 @@ class MainRepoImpl @Inject constructor(
         cartDao.upsertMealToCart(cartMeal)
     }
 
-    override suspend fun updateMealFromCart(cartMeal: CartMeal) {
-        cartDao.updateMealFromCart(cartMeal)
+    override suspend fun deleteMealFromCartBy(name: String) {
+        cartDao.deleteMealFromCartBy(name)
     }
 
-    override suspend fun deleteMealFromCart(cartMeal: CartMeal) {
-        cartDao.deleteMealFromCart(cartMeal)
+    override suspend fun updateAmountMealFromCartByName(name: String, amount: Int) {
+        cartDao.updateAmountMealFromCartByName(name, amount)
     }
 
-    override suspend fun getAllMealsFromCart(): Flow<List<CartMeal>> {
+    override fun getAllMealsFromCart(): Flow<List<CartMeal>> {
         return cartDao.getAllMealsFromCart()
     }
 }

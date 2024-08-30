@@ -2,20 +2,24 @@ package com.example.foodiesnew.presentation.order_screen.meal_bottom_sheet.sheet
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.foodiesnew.data.local.models.CartMeal
 import com.example.foodiesnew.data.remote.models.Meal
 import com.example.foodiesnew.presentation.order_screen.meal_bottom_sheet.sections.AddMealSection
 import com.example.foodiesnew.presentation.order_screen.meal_bottom_sheet.sections.DescriptionSection
 import com.example.foodiesnew.presentation.order_screen.meal_bottom_sheet.sections.HeaderSection
+import com.example.foodiesnew.presentation.order_screen.screen.OrderScreenVM
 import com.example.foodiesnew.ui.theme.mShapes
 import kotlin.reflect.full.memberProperties
 
@@ -23,7 +27,8 @@ import kotlin.reflect.full.memberProperties
 @Composable
 fun MealBottomSheet(
     meal: Meal,
-    onDismissRequest: () -> Unit
+    onDismissRequest: () -> Unit,
+    orderScreenVM: OrderScreenVM
 ) {
     val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     ModalBottomSheet(
@@ -57,7 +62,21 @@ fun MealBottomSheet(
 
             DescriptionSection(ingredients = ingredients)
 
-            AddMealSection()
+            var mealCount by rememberSaveable { mutableIntStateOf(1) }
+            AddMealSection(
+                mealCount = mealCount,
+                onMinusClick = { mealCount -= 1 },
+                onPlusClick = { mealCount += 1 },
+                onAddMealClick = {
+                    orderScreenVM.upsertMealToCart(CartMeal(
+                        title = meal.strMeal,
+                        ingredients = ingredients,
+                        image = "${meal.strMealThumb}/preview",
+                        amount = mealCount
+                    ))
+                    onDismissRequest()
+                }
+            )
         }
     }
 }

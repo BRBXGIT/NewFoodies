@@ -1,47 +1,38 @@
-package com.example.foodiesnew.presentation.order_screen.screen
+package com.example.foodiesnew.presentation.cart_screen.screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.foodiesnew.data.local.db.CartDao
 import com.example.foodiesnew.data.local.models.CartMeal
 import com.example.foodiesnew.data.repos.MainRepoImpl
 import com.example.foodiesnew.di.Dispatcher
 import com.example.foodiesnew.di.FoodiesDispatchers
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class OrderScreenVM @Inject constructor(
+class CartScreenVM @Inject constructor(
     private val mainRepoImpl: MainRepoImpl,
-    private val cartDao: CartDao,
     @Dispatcher(FoodiesDispatchers.IO) private val dispatcherIo: CoroutineDispatcher
 ): ViewModel() {
-
-    val mealCategories = flow {
-        emit(mainRepoImpl.getAllMealCategories().categories)
-    }.stateIn(
-        viewModelScope,
-        SharingStarted.WhileSubscribed(5_000),
-        emptyList()
-    )
-
-    val meals = flow {
-        emit(mainRepoImpl.getAllMeals().meals)
-    }.stateIn(
-        viewModelScope,
-        SharingStarted.WhileSubscribed(5_000),
-        emptyList()
-    )
-
-    fun upsertMealToCart(cartMeal: CartMeal) {
+    fun updateAmountMealFromCartByName(name: String, amount: Int) {
         viewModelScope.launch(dispatcherIo) {
-            cartDao.upsertMealToCart(cartMeal)
+            mainRepoImpl.updateAmountMealFromCartByName(name, amount)
         }
+    }
+
+    fun deleteMealFromCart(name: String) {
+        viewModelScope.launch(dispatcherIo) {
+            mainRepoImpl.deleteMealFromCartBy(name)
+        }
+    }
+
+    fun getMealsFromCart(): Flow<List<CartMeal>> {
+        return mainRepoImpl.getAllMealsFromCart()
     }
 }

@@ -5,25 +5,20 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.room.util.foreignKeyCheck
 import com.example.foodiesnew.presentation.order_screen.sections.CategoriesSection
 import com.example.foodiesnew.presentation.order_screen.sections.ContainerWithScrollBehavior
 import com.example.foodiesnew.presentation.order_screen.sections.MealCategoriesSection
-import com.example.foodiesnew.presentation.order_screen.sections.MealsSection
 import com.example.foodiesnew.presentation.order_screen.sections.OrderPlaceSection
 import com.example.foodiesnew.presentation.order_screen.sections.RepeatLastOrderSection
 import com.example.foodiesnew.ui.theme.mColors
@@ -66,7 +61,8 @@ fun OrderScreen(
             val meals by orderScreenVM.meals.collectAsStateWithLifecycle()
             MealCategoriesSection(
                 mealCategories = mealCategories,
-                meals = meals
+                meals = meals,
+                orderScreenVM = orderScreenVM
             )
         }
     }

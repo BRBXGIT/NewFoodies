@@ -33,12 +33,6 @@ object MainModule {
 
     @Provides
     @Singleton
-    fun provideMainRepo(mealApiInstance: MealApiInstance): MainRepo {
-        return MainRepoImpl(mealApiInstance)
-    }
-
-    @Provides
-    @Singleton
     fun provideCartDao(
         @ApplicationContext context: Context
     ): CartDao {
@@ -47,5 +41,17 @@ object MainModule {
             klass = CartDb::class.java,
             name = "CartDb"
         ).build().cartDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMainRepo(
+        mealApiInstance: MealApiInstance,
+        cartDao: CartDao
+    ): MainRepo {
+        return MainRepoImpl(
+            mealApiInstance = mealApiInstance,
+            cartDao = cartDao
+        )
     }
 }

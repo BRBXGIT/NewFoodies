@@ -13,9 +13,9 @@ interface MainRepo {
 
     suspend fun upsertMealToCart(cartMeal: CartMeal)
 
-    suspend fun deleteMealFromCart(cartMeal: CartMeal)
+    suspend fun deleteMealFromCartBy(name: String)
 
-    suspend fun updateMealFromCart(cartMeal: CartMeal)
+    suspend fun updateAmountMealFromCartByName(name: String, amount: Int)
 
-    suspend fun getAllMealsFromCart(): Flow<List<CartMeal>>
+    fun getAllMealsFromCart(): Flow<List<CartMeal>>
 }
