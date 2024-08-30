@@ -62,13 +62,11 @@ fun OrderScreen(
             verticalArrangement = Arrangement.spacedBy(0.dp)
         ) {
             val mealCategories by orderScreenVM.mealCategories.collectAsStateWithLifecycle()
+            val meals by orderScreenVM.meals.collectAsStateWithLifecycle()
             MealCategoriesSection(
                 mealCategories = mealCategories,
-                orderScreenVM = orderScreenVM
+                meals = meals
             )
-
-            val meals by orderScreenVM.meals.collectAsStateWithLifecycle()
-            MealsSection(meals = meals)
         }
     }
 }

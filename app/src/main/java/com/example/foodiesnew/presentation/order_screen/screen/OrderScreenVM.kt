@@ -4,9 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.foodiesnew.data.repos.MainRepoImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
@@ -23,13 +21,6 @@ class OrderScreenVM @Inject constructor(
         SharingStarted.WhileSubscribed(5_000),
         emptyList()
     )
-
-    private var _chosenCategory = MutableStateFlow("Beef")
-    val chosenCategory = _chosenCategory.asStateFlow()
-
-    fun setCategory(category: String) {
-        _chosenCategory.value = category
-    }
 
     val meals = flow {
         emit(mainRepoImpl.getAllMeals().meals)
