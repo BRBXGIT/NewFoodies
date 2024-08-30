@@ -8,9 +8,11 @@ import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.foodiesnew.presentation.cart_screen.navigation.cartScreen
+import com.example.foodiesnew.presentation.cart_screen.screen.CartScreenVM
 import com.example.foodiesnew.presentation.common_bars.CommonTopAppBar
 import com.example.foodiesnew.presentation.common_bars.MainScreensBottomBar
 import com.example.foodiesnew.presentation.order_screen.navigation.OrderScreenRoute
@@ -24,11 +26,15 @@ fun NavGraph() {
 
     val scrollBehavior =
         TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val cartScreenVM = hiltViewModel<CartScreenVM>()
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
             .nestedScroll(scrollBehavior.nestedScrollConnection),
-        bottomBar = { MainScreensBottomBar(navController = navController) },
+        bottomBar = { MainScreensBottomBar(
+            navController = navController,
+            cartScreenVM = cartScreenVM
+        ) },
         topBar = { CommonTopAppBar() }
     ) { mainScaffoldPadding ->
         NavHost(
@@ -45,7 +51,8 @@ fun NavGraph() {
             )
 
             cartScreen(
-                mainScaffoldPadding = mainScaffoldPadding
+                mainScaffoldPadding = mainScaffoldPadding,
+                cartScreenVM = cartScreenVM
             )
         }
     }

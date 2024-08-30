@@ -1,10 +1,13 @@
 package com.example.foodiesnew.presentation.common_bars
 
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -14,6 +17,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.foodiesnew.R
 import com.example.foodiesnew.presentation.cart_screen.navigation.CartScreenRoute
+import com.example.foodiesnew.presentation.cart_screen.screen.CartScreenVM
 import com.example.foodiesnew.presentation.order_screen.navigation.OrderScreenRoute
 import com.example.foodiesnew.presentation.settings_screen.navigation.SettingsScreenRoute
 import com.example.foodiesnew.ui.theme.mTypography
@@ -28,7 +32,8 @@ data class NavItem(
 
 @Composable
 fun MainScreensBottomBar(
-    navController: NavHostController
+    navController: NavHostController,
+    cartScreenVM: CartScreenVM
 ) {
     val navItems = listOf(
         NavItem(
@@ -69,17 +74,45 @@ fun MainScreensBottomBar(
                     }
                 },
                 icon = {
-                    Icon(
-                        painter = painterResource(id = if(navItem.destination == currentRoute) navItem.iconChosen else navItem.icon),
-                        contentDescription = null
-                    )
+                    if(navItem.destination == "CartScreenRoute") {
+                        val amountMealsInCart = cartScreenVM.getMealsFromCart().collectAsState(
+                            initial = emptyList()
+                        ).value.size
+                        if(amountMealsInCart == 0) {
+                            Icon(
+                                painter = painterResource(id = if(navItem.destination == currentRoute) navItem.iconChosen else navItem.icon),
+                                contentDescription = null
+                            )
+                        } else {
+                            BadgedBox(
+                                badge = {
+                                    Badge {
+                                        Text(
+                                            text = amountMealsInCart.toString(),
+                                            style = mTypography.labelMedium
+                                        )
+                                    }
+                                }
+                            ) {
+                                Icon(
+                                    painter = painterResource(id = if(navItem.destination == currentRoute) navItem.iconChosen else navItem.icon),
+                                    contentDescription = null
+                                )
+                            }
+                        }
+                    } else {
+                        Icon(
+                            painter = painterResource(id = if(navItem.destination == currentRoute) navItem.iconChosen else navItem.icon),
+                            contentDescription = null
+                        )
+                    }
                 },
                 label = {
                     Text(
                         text = navItem.title,
                         style = mTypography.labelLarge
                     )
-                }
+                },
             )
         }
     }
