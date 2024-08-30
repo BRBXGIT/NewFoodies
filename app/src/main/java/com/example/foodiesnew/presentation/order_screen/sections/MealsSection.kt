@@ -20,6 +20,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.foodiesnew.R
 import com.example.foodiesnew.data.models.Meal
+import com.example.foodiesnew.presentation.order_screen.meal_bottom_sheet.sheet.MealBottomSheet
 import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mShapes
 import com.example.foodiesnew.ui.theme.mTypography
@@ -59,10 +64,18 @@ fun MealsSection(
 fun MealPreview(
     meal: Meal
 ) {
+    var openMealBottomSheet by rememberSaveable { mutableStateOf(false) }
+    if(openMealBottomSheet) {
+        MealBottomSheet(
+            meal = meal,
+            onDismissRequest = { openMealBottomSheet = false }
+        )
+    }
     Surface(
         shadowElevation = 2.dp,
         shape = mShapes.extraSmall,
-        modifier = Modifier.height(300.dp)
+        modifier = Modifier.height(300.dp),
+        onClick = { openMealBottomSheet = true }
     ) {
         Column(
             modifier = Modifier
@@ -113,7 +126,7 @@ fun MealPreview(
                             color = mColors.primary,
                             shape = mShapes.extraSmall
                         )
-                        .clickable {  }
+                        .clickable { openMealBottomSheet = true }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_plus_filled),
