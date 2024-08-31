@@ -6,6 +6,10 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 private val DarkColorScheme = darkColorScheme(
+
+)
+
+private val LightColorScheme = lightColorScheme(
     //Bottom bar
     surface = FullyWhite,
     onSurface = DarkCharcoal,
@@ -23,13 +27,9 @@ private val DarkColorScheme = darkColorScheme(
     onTertiary = DarkCharcoal
 )
 
-private val LightColorScheme = lightColorScheme(
-
-)
-
 @Composable
 fun FoodiesNewTheme(
-    darkTheme: Boolean = true,
+    darkTheme: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
