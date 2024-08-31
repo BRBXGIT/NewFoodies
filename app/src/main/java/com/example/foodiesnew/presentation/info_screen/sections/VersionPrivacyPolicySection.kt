@@ -1,4 +1,4 @@
-package com.example.foodiesnew.presentation.settings_screen.sections
+package com.example.foodiesnew.presentation.info_screen.sections
 
 import android.content.Context
 import android.content.Intent
@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
@@ -19,19 +20,31 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.foodiesnew.presentation.common_bars.snackbars.SnackbarController
+import com.example.foodiesnew.presentation.common_bars.snackbars.SnackbarEvent
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
 fun VersionPrivacyPolicySection(
-    context: Context = LocalContext.current
+    context: Context = LocalContext.current,
+    scope: CoroutineScope = rememberCoroutineScope()
 ) {
     val clipboardManager = LocalClipboardManager.current
     val versionText = "Version"
-    val versionCodeText = "Stable 0.15.3 (22.06.2024)"
+    val versionCodeText = "Stable 1.0.0 (31.08.2024)"
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
                 clipboardManager.setText(AnnotatedString("$versionText $versionCodeText"))
+                scope.launch {
+                    SnackbarController.sendEvent(
+                        SnackbarEvent(
+                            message = "Copied to clipboard"
+                        )
+                    )
+                }
             }
             .padding(horizontal = 16.dp),
         contentAlignment = Alignment.CenterStart

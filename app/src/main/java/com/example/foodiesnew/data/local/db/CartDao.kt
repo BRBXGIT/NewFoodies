@@ -1,9 +1,7 @@
 package com.example.foodiesnew.data.local.db
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Query
-import androidx.room.Update
 import androidx.room.Upsert
 import com.example.foodiesnew.data.local.models.CartMeal
 import kotlinx.coroutines.flow.Flow

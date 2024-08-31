@@ -1,4 +1,4 @@
-package com.example.foodiesnew.presentation.common_bars
+package com.example.foodiesnew.presentation.common_bars.bottom_bar
 
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
@@ -17,7 +17,7 @@ import com.example.foodiesnew.R
 import com.example.foodiesnew.presentation.cart_screen.navigation.CartScreenRoute
 import com.example.foodiesnew.presentation.cart_screen.screen.CartScreenVM
 import com.example.foodiesnew.presentation.order_screen.navigation.OrderScreenRoute
-import com.example.foodiesnew.presentation.settings_screen.navigation.InfoScreenRoute
+import com.example.foodiesnew.presentation.info_screen.navigation.InfoScreenRoute
 import com.example.foodiesnew.ui.theme.mTypography
 
 data class NavItem(

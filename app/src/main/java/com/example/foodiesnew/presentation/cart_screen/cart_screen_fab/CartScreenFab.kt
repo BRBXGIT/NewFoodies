@@ -1,4 +1,4 @@
-package com.example.foodiesnew.presentation.cart_screen_fab
+package com.example.foodiesnew.presentation.cart_screen.cart_screen_fab
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -10,14 +10,20 @@ import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.res.painterResource
 import com.example.foodiesnew.R
+import com.example.foodiesnew.presentation.common_bars.snackbars.SnackbarController
+import com.example.foodiesnew.presentation.common_bars.snackbars.SnackbarEvent
 import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mTypography
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
 fun CartScreenFab(
-    currentRoute: String
+    currentRoute: String,
+    scope: CoroutineScope = rememberCoroutineScope()
 ) {
     AnimatedVisibility(
         visible = currentRoute == "CartScreenRoute",
@@ -38,7 +44,13 @@ fun CartScreenFab(
                     contentDescription = null
                 )
             },
-            onClick = { /*TODO*/ }
+            onClick = {
+                scope.launch {
+                    SnackbarController.sendEvent(SnackbarEvent(
+                        message = "This part is hardcoded :)"
+                    ))
+                }
+            }
         )
     }
 }

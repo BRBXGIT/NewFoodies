@@ -1,4 +1,4 @@
-package com.example.foodiesnew.presentation.settings_screen.sections
+package com.example.foodiesnew.presentation.info_screen.sections
 
 import android.content.Context
 import android.content.Intent

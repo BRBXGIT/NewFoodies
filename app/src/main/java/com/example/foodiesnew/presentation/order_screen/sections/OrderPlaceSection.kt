@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -27,12 +28,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.foodiesnew.R
+import com.example.foodiesnew.presentation.common_bars.snackbars.SnackbarController
+import com.example.foodiesnew.presentation.common_bars.snackbars.SnackbarEvent
 import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mShapes
 import com.example.foodiesnew.ui.theme.mTypography
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
-fun OrderPlaceSection() {
+fun OrderPlaceSection(
+    scope: CoroutineScope = rememberCoroutineScope()
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -51,7 +58,14 @@ fun OrderPlaceSection() {
             icon = R.drawable.ic_home_outlined,
             iconChosen = R.drawable.ic_home_filled,
             isChosen = chosenOrderType == 0,
-            onClick = { chosenOrderType = 0 }
+            onClick = {
+                chosenOrderType = 0
+                scope.launch {
+                    SnackbarController.sendEvent(SnackbarEvent(
+                        message = "This part is hardcoded :)"
+                    ))
+                }
+            }
         )
 
         OrderPlace(
@@ -59,7 +73,14 @@ fun OrderPlaceSection() {
             icon = R.drawable.ic_delivery_outlined,
             iconChosen = R.drawable.ic_delivery_filled,
             isChosen = chosenOrderType == 1,
-            onClick = { chosenOrderType = 1 }
+            onClick = {
+                chosenOrderType = 1
+                scope.launch {
+                    SnackbarController.sendEvent(SnackbarEvent(
+                        message = "This part is hardcoded :)"
+                    ))
+                }
+            }
         )
     }
 }

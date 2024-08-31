@@ -1,9 +1,9 @@
-package com.example.foodiesnew.presentation.settings_screen.navigation
+package com.example.foodiesnew.presentation.info_screen.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.example.foodiesnew.presentation.settings_screen.screen.InfoScreen
+import com.example.foodiesnew.presentation.info_screen.screen.InfoScreen
 import kotlinx.serialization.Serializable
 
 @Serializable

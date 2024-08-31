@@ -1,4 +1,4 @@
-package com.example.foodiesnew.presentation.common_bars
+package com.example.foodiesnew.presentation.common_bars.top_bar
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -17,7 +17,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.foodiesnew.R
 import com.example.foodiesnew.ui.theme.FullyWhite
-import com.example.foodiesnew.ui.theme.PineGreen
 import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mTypography
 

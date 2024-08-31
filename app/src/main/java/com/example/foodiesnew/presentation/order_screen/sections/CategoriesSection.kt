@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -27,9 +28,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.foodiesnew.R
+import com.example.foodiesnew.presentation.common_bars.snackbars.SnackbarController
+import com.example.foodiesnew.presentation.common_bars.snackbars.SnackbarEvent
 import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mShapes
 import com.example.foodiesnew.ui.theme.mTypography
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 data class CategoryData(
     val icon: Int,
@@ -38,7 +43,9 @@ data class CategoryData(
 )
 
 @Composable
-fun CategoriesSection() {
+fun CategoriesSection(
+    scope: CoroutineScope = rememberCoroutineScope()
+) {
     val categories = listOf(
         CategoryData(
             icon = R.drawable.ic_menu_oitlined,
@@ -77,7 +84,14 @@ fun CategoriesSection() {
                 iconChosen = category.iconChosen,
                 title = category.title,
                 isChosen = chosenCategory == index,
-                onClick = { chosenCategory = index }
+                onClick = {
+                    chosenCategory = index
+                    scope.launch {
+                        SnackbarController.sendEvent(SnackbarEvent(
+                            message = "This part is hardcoded :)"
+                        ))
+                    }
+                }
             )
         }
     }
