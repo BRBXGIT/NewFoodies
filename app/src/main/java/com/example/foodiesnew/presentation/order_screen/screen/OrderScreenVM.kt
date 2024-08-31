@@ -7,6 +7,8 @@ import com.example.foodiesnew.data.local.models.CartMeal
 import com.example.foodiesnew.data.repos.MainRepoImpl
 import com.example.foodiesnew.di.Dispatcher
 import com.example.foodiesnew.di.FoodiesDispatchers
+import com.example.foodiesnew.presentation.common_bars.snackbars.SnackbarController
+import com.example.foodiesnew.presentation.common_bars.snackbars.SnackbarEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.SharingStarted
@@ -19,11 +21,20 @@ import javax.inject.Inject
 class OrderScreenVM @Inject constructor(
     private val mainRepoImpl: MainRepoImpl,
     private val cartDao: CartDao,
-    @Dispatcher(FoodiesDispatchers.IO) private val dispatcherIo: CoroutineDispatcher
+    @Dispatcher(FoodiesDispatchers.IO) private val dispatcherIo: CoroutineDispatcher,
 ): ViewModel() {
 
     val mealCategories = flow {
-        emit(mainRepoImpl.getAllMealCategories().categories)
+        try {
+            emit(mainRepoImpl.getAllMealCategories().categories)
+        } catch (e: Exception) {
+            SnackbarController.sendEvent(
+                event = SnackbarEvent(
+                    message = "Something wrong with internet"
+                )
+            )
+            emit(emptyList())
+        }
     }.stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5_000),
@@ -31,7 +42,16 @@ class OrderScreenVM @Inject constructor(
     )
 
     val meals = flow {
-        emit(mainRepoImpl.getAllMeals().meals)
+        try {
+            emit(mainRepoImpl.getAllMeals().meals)
+        } catch (e: Exception) {
+            SnackbarController.sendEvent(
+                event = SnackbarEvent(
+                    message = "Something wrong with internet"
+                )
+            )
+            emit(emptyList())
+        }
     }.stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5_000),
