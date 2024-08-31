@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.foodiesnew.data.local.models.CartMeal
 
+//Local db for cart
 @Database(
     entities = [CartMeal::class],
     version = 1

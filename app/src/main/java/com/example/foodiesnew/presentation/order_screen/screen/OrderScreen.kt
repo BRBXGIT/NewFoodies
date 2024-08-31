@@ -15,7 +15,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.room.util.foreignKeyCheck
 import com.example.foodiesnew.presentation.order_screen.sections.CategoriesSection
 import com.example.foodiesnew.presentation.order_screen.sections.ContainerWithScrollBehavior
 import com.example.foodiesnew.presentation.order_screen.sections.MealCategoriesSection

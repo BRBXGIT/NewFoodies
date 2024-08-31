@@ -17,6 +17,7 @@ import androidx.compose.ui.layout.Layout
 import kotlin.math.max
 import kotlin.math.roundToInt
 
+//Custom container for collapsing top app bar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContainerWithScrollBehavior(
@@ -48,7 +49,6 @@ fun ContainerWithScrollBehavior(
 
     Surface(
         modifier = Modifier.then(appBarDragModifier),
-//        color = SequoiaTheme.colorScheme.background
     ) {
 
         Layout(

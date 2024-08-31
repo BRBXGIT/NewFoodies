@@ -1,7 +1,6 @@
 package com.example.foodiesnew.presentation.order_screen.sections
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -34,7 +33,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.debugInspectorInfo
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -43,7 +41,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
 import com.example.foodiesnew.data.remote.models.Category
 import com.example.foodiesnew.data.remote.models.Meal
-import com.example.foodiesnew.presentation.cart_screen.screen.CartScreenVM
 import com.example.foodiesnew.presentation.order_screen.screen.OrderScreenVM
 import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mTypography
