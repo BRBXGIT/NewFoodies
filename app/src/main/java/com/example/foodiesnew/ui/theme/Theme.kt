@@ -24,7 +24,9 @@ private val LightColorScheme = lightColorScheme(
     onPrimary = DarkCharcoal,
     secondary = SlateGray,
     tertiary = Alabaster,
-    onTertiary = DarkCharcoal
+    onTertiary = DarkCharcoal,
+    //For top app bar
+    tertiaryContainer = PineGreen
 )
 
 @Composable

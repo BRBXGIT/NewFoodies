@@ -17,7 +17,7 @@ import com.example.foodiesnew.R
 import com.example.foodiesnew.presentation.cart_screen.navigation.CartScreenRoute
 import com.example.foodiesnew.presentation.cart_screen.screen.CartScreenVM
 import com.example.foodiesnew.presentation.order_screen.navigation.OrderScreenRoute
-import com.example.foodiesnew.presentation.settings_screen.navigation.SettingsScreenRoute
+import com.example.foodiesnew.presentation.settings_screen.navigation.InfoScreenRoute
 import com.example.foodiesnew.ui.theme.mTypography
 
 data class NavItem(
@@ -50,11 +50,11 @@ fun MainScreensBottomBar(
             destination = "CartScreenRoute"
         ),
         NavItem(
-            title = "Settings",
-            icon = R.drawable.ic_settings_outlined,
-            iconChosen = R.drawable.ic_settings_filled,
-            route = SettingsScreenRoute,
-            destination = "SettingsScreenRoute"
+            title = "Info",
+            icon = R.drawable.ic_info_outlined,
+            iconChosen = R.drawable.ic_info_filled,
+            route = InfoScreenRoute,
+            destination = "InfoScreenRoute"
         )
     )
 

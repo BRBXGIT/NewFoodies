@@ -18,13 +18,14 @@ import androidx.compose.ui.unit.dp
 import com.example.foodiesnew.R
 import com.example.foodiesnew.ui.theme.FullyWhite
 import com.example.foodiesnew.ui.theme.PineGreen
+import com.example.foodiesnew.ui.theme.mColors
 import com.example.foodiesnew.ui.theme.mTypography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CommonTopAppBar() {
     CenterAlignedTopAppBar(
-        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = PineGreen),
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = mColors.tertiaryContainer),
         title = {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),

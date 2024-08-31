@@ -3,14 +3,14 @@ package com.example.foodiesnew.presentation.settings_screen.navigation
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.example.foodiesnew.presentation.settings_screen.screen.SettingsScreen
+import com.example.foodiesnew.presentation.settings_screen.screen.InfoScreen
 import kotlinx.serialization.Serializable
 
 @Serializable
-object SettingsScreenRoute
+object InfoScreenRoute
 
-fun NavGraphBuilder.settingsScreen(
+fun NavGraphBuilder.infoScreen(
     mainScaffoldPadding: PaddingValues
-) = composable<SettingsScreenRoute> {
-    SettingsScreen(mainScaffoldPadding = mainScaffoldPadding)
+) = composable<InfoScreenRoute> {
+    InfoScreen(mainScaffoldPadding = mainScaffoldPadding)
 }
