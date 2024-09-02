@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/app_icon.svg"/>
+<img src="docs/app_icon.svg" width="100" height="100"/>
 
 # FoodiesNew
 
