@@ -8,25 +8,5 @@
 
 </div>
 
-## Features
-- Modern and easy to use interface
-- Your statistics for all days
-### Calories and nutrients
-- Highly customizable nutrients indicators
-- Very convinient calories statisticks for each day
-- Water statistics
-### Eating
-- Create highly customizable dishes
-- Add dishes to featured
-- Create dishes for all meal times
-- Configure how many portions of dish you eat
-- Find dishes by search bar
-### Activities
-- Create highly customizable activites
-- Add activities to featured
-### Alarms
-- Customizable schedules for each meal time
-- Option to enable or disable alarms
-### Appearance
-- Material You theme
-- You can use one of 5 different ui color theme
+## New version of old app
+- This is new version of my old app, which named foodies. I just wanted to see how fast and qualitatively i can remake old app. Of course i choose another design in practise purpose.
