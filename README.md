@@ -18,3 +18,4 @@
 ## Main point
 - Main point was to create custom top app bar with scroll behaviour, because in old app i didn't do it in a right way
 ## App preview
+https://github.com/user-attachments/assets/69734428-f433-4b2b-9e50-132f56b5927b
