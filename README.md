@@ -6,6 +6,8 @@
 
 ### App which i created just for practise and fun. This is an online shop with dishes
 
+</div>
+
 ## Features
 - Modern and easy to use interface
 - Your statistics for all days
@@ -28,5 +30,3 @@
 ### Appearance
 - Material You theme
 - You can use one of 5 different ui color theme
-
-</div>
