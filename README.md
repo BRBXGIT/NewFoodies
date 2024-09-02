@@ -17,4 +17,4 @@
 - Cart which was made with local db(api doesn't provides cart methods)
 ## Main point
 - Main point was to create custom top app bar with scroll behaviour, because in old app i didn't do it in a right way
-## App preview:
+## App preview
