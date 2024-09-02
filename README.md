@@ -6,6 +6,4 @@
 
 ### App which i created just for practise and fun. This is an online shop with dishes
 
-<img src="docs/app_logo.png"/>
-
 </div>
