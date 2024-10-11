@@ -1,5 +1,11 @@
 package com.example.foodiesnew.presentation.order_screen.sections
 
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -27,12 +33,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
+import coil.request.ImageRequest
+import coil.size.Size
 import com.example.foodiesnew.R
 import com.example.foodiesnew.data.remote.models.Meal
 import com.example.foodiesnew.presentation.order_screen.meal_bottom_sheet.sheet.MealBottomSheet
@@ -56,13 +69,11 @@ fun MealsSection(
         ),
         modifier = Modifier.fillMaxSize()
     ) {
-        items(meals, key = { it.strMeal }) { meal ->
+        items(meals) { meal ->
             MealPreview(
                 meal = meal,
                 orderScreenVM = orderScreenVM,
-                modifier = Modifier
-                    .height(300.dp)
-                    .animateItem()
+                modifier = Modifier.height(300.dp)
             )
         }
     }
@@ -100,11 +111,17 @@ fun MealPreview(
                     .size(150.dp)
                     .clip(mShapes.medium)
             ) {
-                AsyncImage(
-                    model = "${meal.strMealThumb}/preview",
+                SubcomposeAsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data("${meal.strMealThumb}/preview")
+                        .crossfade(500)
+                        .size(Size.ORIGINAL)
+                        .build(),
                     contentDescription = null,
                     modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop
+                    filterQuality = FilterQuality.Low,
+                    contentScale = ContentScale.Crop,
+                    loading = { AnimatedShimmer() }
                 )
             }
 
@@ -147,4 +164,36 @@ fun MealPreview(
             }
         }
     }
+}
+
+@Composable
+fun AnimatedShimmer() {
+    val shimmerColors = listOf(
+        Color.LightGray.copy(alpha = 0.6f),
+        Color.LightGray.copy(alpha = 0.2f),
+        Color.LightGray.copy(alpha = 0.6f),
+    )
+    val transition = rememberInfiniteTransition(label = "transition")
+    val translateAnim = transition.animateFloat(
+        initialValue = 0f,
+        targetValue = 1000f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(
+                durationMillis = 1000,
+                easing = FastOutSlowInEasing
+            ),
+            repeatMode = RepeatMode.Reverse
+        ), label = "translateAnim"
+    )
+    val brush = Brush.linearGradient(
+        colors = shimmerColors,
+        start = Offset.Zero,
+        end = Offset(x = translateAnim.value, y = translateAnim.value)
+    )
+
+    Box(
+        modifier = Modifier
+            .size(150.dp)
+            .background(brush)
+    )
 }

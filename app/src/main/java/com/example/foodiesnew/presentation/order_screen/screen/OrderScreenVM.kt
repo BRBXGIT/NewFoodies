@@ -47,7 +47,7 @@ class OrderScreenVM @Inject constructor(
         } catch (e: Exception) {
             SnackbarController.sendEvent(
                 event = SnackbarEvent(
-                    message = "Something wrong with internet"
+                    message = e.message.toString()
                 )
             )
             emit(emptyList())
