@@ -11,7 +11,7 @@
 ## New version of old app
 - This is new version of my old app, which named foodies. I just wanted to see how fast and qualitatively i can remake old app. Of course i choose another design in practise purpose.
 ## Let's run through the features
-- Minimalistick design
+- Minimalistic design
 - Dishes sorted by category
 - Custom top app bar with scroll behaviour
 - Cart which was made with local db(api doesn't provides cart methods)
